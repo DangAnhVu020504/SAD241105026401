@@ -18,6 +18,7 @@ nhằm truy xuất thông tin mã dự án và dữ liệu khác mà không cầ
 + UI Package: Chứa các lớp giao diện cho người dùng như Employee, Payroll Administrator, và các lớp chức năng liên quan đến thanh toán và quản lý phiếu thời gian.
 + Business Logic Package: Bao gồm các lớp xử lý logic tính toán lương và kiểm tra hợp lệ dữ liệu.
 + Database Access Package: Sử dụng JDBC để truy xuất dữ liệu từ hệ thống DB2 hiện có.
+![Diagram](https://planttext.com/api/plantuml/png/R591RiCW4Bpx5IYdv90F-50bgNkmr4gHqgZd3MmT5CnQi8vaLNbP3trIlr1iOzTfpGM6WPsPXU_FhurdS5oN9gb0Ng10iJZcOj-l5-8Z4K8Qy5uybPMX1h7R2WCZphDK7DXfM_Jx7WrAtaDJekKNv3EfvIeLLz8gNhICxbMNAC5DgTieDP2354VyL-fCjVDlv2weKg4jTqLkoM-INUsrnL3ncGejvr85duwCEJIUiHpqhc2q0iOO8hVlrFey4Ha4sv-f7CbGUJR7r48632VmABQoFJ_d8TizTdDKbmw3zdBLem3KiAuhDM5KQ7H4dUJuGElrmtskP6peV-g-0IqVxIGRjAhz5py0003__mC0)
 
 2. Cơ chế Cần Thiết
 * 2.1 Danh sách các Cơ chế
@@ -33,6 +34,7 @@ nhằm truy xuất thông tin mã dự án và dữ liệu khác mà không cầ
 + Hệ thống tự động thực hiện quy trình thanh toán định kỳ mà không cần can thiệp thủ công, đồng thời đảm bảo tính chính xác và kịp thời trong việc thanh toán cho nhân viên.
 * 2.2 Lý do Lựa chọn
 - Các cơ chế trên đảm bảo tính bảo mật và bền vững cho hệ thống, tận dụng được dữ liệu từ hệ thống cũ mà không cần phải thay đổi toàn bộ hạ tầng, đồng thời duy trì khả năng xử lý tự động và hiệu quả.
+  ![DiagramDiagram](https://planttext.com/api/plantuml/png/P90n3i8m34NtdC9Yvm8TK5N2NgaIkqaDZPJ4KUqEFHi3H-8Af42HK5V_vwTlF--FMXH7dM8mw9H7ECKSU2OokOozyncJmgx5UUGGkbcKuWvGeEt-2OkA5nHwXxOnPXN1_b3W2ZeAv1IAAL9IqtPBi48LM2yvu0pvamDdzPnaepaEp48_B98Et7zjjgdWZC7tg0IOUf1oqOQr3UnN6QUh7oF8v1o9R4fzSrogb7KHl96fAVNBlru0003__mC0)
   
 3. Phân tích Ca Sử dụng "Select Payment"
 * 3.1 Mô tả Ca Sử dụng
@@ -51,6 +53,7 @@ nhằm truy xuất thông tin mã dự án và dữ liệu khác mà không cầ
 - PayrollSystem hiển thị các phương thức thanh toán.
 - Nhân viên chọn phương thức mong muốn và nhập thông tin cần thiết (địa chỉ nhận lương, tên ngân hàng, hoặc số tài khoản).
 - PayrollSystem xác nhận thông tin, lưu cập nhật và kết thúc quy trình.
+  ![DiagramDiagram](https://planttext.com/api/plantuml/png/R91DJiD038NtSmgh-rwW2rI5T4r4AlPcnXIB-PFjqEPiB3WILo011e5Ww--zzqb-UtdTgw7ObA93RqNWa6eiCv6hovazLym6cm5dAJ6Eingb3Q32CFvEz6XuZqeViE-SQqEmlLh2ExYfbE78YJnASCEutljk1xTamlHCG1TMutm2Qw6-W-rNknKXa257_JD_o4O2ZsKIXNEH9sgE5TvXv816d_o7VCH5FDMLXN-zroK_i2JGoNlILctoRux69KDQ4dWYjwSSre--0m00__y30000)
   
 4. Phân tích Ca Sử dụng "Maintain Timecard"
 * 4.1 Mô tả Ca Sử dụng
@@ -71,11 +74,13 @@ nhằm truy xuất thông tin mã dự án và dữ liệu khác mà không cầ
 - Nhân viên có thể lưu lại hoặc chọn gửi phiếu thời gian:
 + Khi gửi, PayrollSystem kiểm tra hợp lệ (số giờ, mã dự án).
 + Sau khi gửi, phiếu chuyển sang chế độ chỉ đọc.
+  ![Diagram](https://planttext.com/api/plantuml/png/R94zJWCn48NxFOLBA7A1BL0AA58W8ILIwc7tGGnZpyepYRH2d8o28t45ziS9QvJERvxzvflnpzVtMesI7GDN3PEgUmWTIm-uZyevXwmszxNRMlBnTQn62bZgZlg0Q8-mWxIrUrhAqLSm6YlADxUrEucVxA68jFC13QK_uxFAH6Td9hAiIgA379Fk9RrZwE-ZJLH9teQsYukNo09bpWtJUTTtnMGjZ3phrOGapDjU3M5EE17xbWmvV1DVP1pcMOH1CHCrKBqswcNjgzNTlmKMrlbjLG8KrXgn7J_q5m00__y30000)
   
 5. Hợp nhất Kết quả Phân tích
 - Bản phân tích hệ thống Payroll System cho thấy:
 - Kiến trúc client-server đảm bảo hệ thống hoạt động hiệu quả với số lượng lớn người dùng.
 - Cơ chế bảo mật và lưu trữ đảm bảo dữ liệu nhạy cảm và tính liên tục của dữ liệu.
 - Các ca sử dụng "Select Payment" và "Maintain Timecard" cho phép nhân viên thao tác nhanh chóng và an toàn.
+  ![Diagram](https://planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aO9hRa5EVcLgAfIh591OMPIVawFWc9ARcPTPN5AK21HMKaWiXeXmSPKMfoOd5gSgA0MdvgGcboW0DUIcvfM0bOGw6oBaVHCpyqg0M24aCnSeL9G2LMB4nGMpL47N3gm7bM_41RPAGHVAut98pKi1kHW0003__mC0)
   
   ![Diagram](https://planttext.com/api/plantuml/png/X5FBJiD03BpdArQzS-4BsZG8YYWg3N1tDwPTs4Urwo15g5_6WK_Y5_1I4jeD3POYHVB4CvvnFjy_ne70KsrqjWNv0ciKemKqtcajoYOGcf5uomHNrtwOYSN-lMt5aXf24ACBizMkGHGpI-YVG1w1Ofs94ZLAuY6DGKj9SmxA4Z_YNXcKuAkklqkvMfsJoYYh0daWvuU8vs3Z1WSQdrm2kKIBF0V54hVEKqZOTzcn5taTb4KMS-FMIWxuqcfTU2SPh-owBsyAMjOwafUWmIiC9m5JPupYCSwcc2kmbSRMN357shW13nz1gmg81_Nrj0c8Nr22w9oSoBWLoxB4Q_vZMW44AmZTLwTTkoxowL2Wp6VZAP4JHNwUDEzgz4qq_3b2zjb_UrBa0pVr1_n7Rfz-YSGflN8S6_2ysMrjLkZJH4g-oeEZMw9qlkeVrYuRewtYZ_W5003__mC0)
