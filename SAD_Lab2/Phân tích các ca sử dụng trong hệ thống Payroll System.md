@@ -68,3 +68,106 @@
 - Thành phần liên quan:
 + Employee, PurchaseOrder.
 + ![Diagram](https://planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aO9hRa5EVcLgAbS1K3WpERCWCQz48Q2qA3aZiJZLloWbjSWbiIGn2SZXueAfLT2rmwv4mKf1oRaeDR4aLQ40Ag-G3rAWn8LTFJw3WXFBC8qXoWcX1IcOJb00Uhoaj9WSbuGK9IPdOpZ58JKl1HIEN000003__mC0)
+
+
+```Java
+import java.util.HashMap;
+import java.util.Map;
+
+// Lớp Timecard đại diện cho bảng chấm công
+public class Timecard {
+    private int employeeId;
+    private Map<String, Integer> chargeHours; // Charge code -> Hours worked
+
+    public Timecard(int employeeId) {
+        this.employeeId = employeeId;
+        this.chargeHours = new HashMap<>();
+    }
+
+    // Cập nhật giờ làm việc cho mã charge code
+    public void updateHours(String chargeCode, int hours) {
+        chargeHours.put(chargeCode, chargeHours.getOrDefault(chargeCode, 0) + hours);
+    }
+
+    // Hiển thị thông tin bảng chấm công
+    public void display() {
+        System.out.println("Bang cham cong cho ma nhan vien: " + employeeId);
+        for (Map.Entry<String, Integer> entry : chargeHours.entrySet()) {
+            System.out.println("Charge Code: " + entry.getKey() + ", Hours: " + entry.getValue());
+        }
+    }
+
+    // Lưu bảng chấm công
+    public void save() {
+        System.out.println("Bang cham cong da duoc luu cho ma nhan vien: " + employeeId);
+    }
+}
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+// Lớp TimecardController để quản lý các bảng chấm công
+public class TimecardController {
+    private Map<Integer, Timecard> timecards;
+
+    public TimecardController() {
+        this.timecards = new HashMap<>();
+    }
+
+    // Lấy bảng chấm công hiện tại hoặc tạo mới nếu chưa có
+    public Timecard getTimecard(int employeeId) {
+        return timecards.computeIfAbsent(employeeId, Timecard::new);
+    }
+
+    // Thực hiện ca sử dụng Maintain Timecard
+    public void maintainTimecard(int employeeId, Map<String, Integer> hoursToUpdate) {
+        // Lấy hoặc tạo bảng chấm công
+        Timecard timecard = getTimecard(employeeId);
+
+        // Hiển thị bảng chấm công hiện tại
+        System.out.println("\nBang cham cong hien tai:");
+        timecard.display();
+
+        // Cập nhật giờ làm việc
+        System.out.println("\nDang cap nhat gio lam viec...");
+        for (Map.Entry<String, Integer> entry : hoursToUpdate.entrySet()) {
+            timecard.updateHours(entry.getKey(), entry.getValue());
+        }
+
+        // Hiển thị thông tin sau khi cập nhật
+        System.out.println("\nBang cham cong sau khi cap nhat:");
+        timecard.display();
+
+        // Lưu bảng chấm công
+        timecard.save();
+    }
+}
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+// Chương trình chính
+public class PayrollSystem {
+    public static void main(String[] args) {
+        TimecardController controller = new TimecardController();
+
+        // Dữ liệu giả lập
+        int employeeId = 101;
+        Map<String, Integer> initialHours = new HashMap<>();
+        initialHours.put("001", 8);
+        initialHours.put("002", 4);
+
+        Map<String, Integer> additionalHours = new HashMap<>();
+        additionalHours.put("001", 2);
+        additionalHours.put("003", 5);
+
+        // Chạy mô phỏng
+        System.out.println("=== BANG CHAM CONG ===");
+        controller.maintainTimecard(employeeId, initialHours); // Cập nhật lần đầu
+        controller.maintainTimecard(employeeId, additionalHours); // Cập nhật lần sau
+    }
+}
