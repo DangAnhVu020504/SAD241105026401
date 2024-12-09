@@ -1,97 +1,89 @@
-# Phân tích các hệ thống con của Payroll System
-1. Run Payroll (Chạy bảng lương)
-1.1. Chức năng chính
-Hệ thống Run Payroll tập trung vào việc tính toán, quản lý, và lưu trữ dữ liệu lương cho nhân viên.
+# CÁC HỆ THỐNG CON CỦA HỆ THỐNG PAYROLL SYSTEM
+## 1. Timecard Management System
+- Chức năng chính:
+  - Quản lý thông tin bảng chấm công của nhân viên.
+  - Xác thực mã charge code.
+  - Lưu trữ thông tin giờ làm việc.
+- Thành phần chính:
+  - Timecard Form: Giao diện cho nhân viên nhập giờ làm việc và mã charge code.
+  - Timecard Controller: Logic kiểm tra và xử lý dữ liệu, xác thực mã charge code từ Project Management Database.
+  - Timecard Database: Lưu trữ bảng chấm công.
+  - Integration with Project Management Database: Lấy danh sách mã charge code hợp lệ.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/P90nQiD044NxESMmjNq15yOWgRECmIxIJbQ3f5Yx4gjn8OoFOaX87KWWLLIa4FWUEa6kO4asM2Rjvxt_X_chVnUba9EzoO2qv0vLO8eihvWLKea1G45wHp6ZsgQ6DRa8Gx9TODWARgfIs0peDjpW0Ou04GazKpas_5jq1Jr_nAnT_i9QngKFz3hq0GASJkV3mWpLAcb_FWgCqxO-OTQycWcQvXrrGguxK-SHA-ZHGV7yNbcUF_SeIVDjOvJKZjmxsWtrw5FpfZkqhR_q_rfOi8twNrq0003__mC0)
 
-Nhập thông tin lương:
+## 2. Payroll Processing System
+- Chức năng chính:
+  - Tính lương dựa trên bảng chấm công và thông tin nhân viên.
+  - Tạo phiếu lương và gửi thanh toán đến ngân hàng.
+- Thành phần chính:
+  - Payroll Engine: Thuật toán tính lương dựa trên các yếu tố như giờ làm việc, lương cơ bản, phụ cấp, và khấu trừ.
+  - Employee Data Integration: Kết nối với Employee Database để lấy thông tin nhân viên.
+  - Paycheck Generator: Tạo và lưu phiếu lương vào Paycheck Database.
+  - Bank Integration Module: Gửi thông tin thanh toán đến ngân hàng thông qua hệ thống BankSystem.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/PD51IiGm50RWVKxnw7uku49cQeiBNHHcBl1CGnFQ9gL9XIAkFOLe1JV2m2nSjOjP17gFdC0hc5PbEhXByhwy_uLy3SUrDbYRfYm8KgDg23PfAQJGfaQ_3G0rRFvA8SeSjgqsh9mB8I4LqXmp1a62RQsA0f9QKQQraDbI9iaM7iWZ8IaQl4FjB-n4oIZMAKI_HpFSNKKB4vTLeLh6pasy93wNSaRpSv94X6nWjRgSaoyWkE5kU15WNDyfC7OlEHJZOUna5f29JDHdJ_JMzUyjPC8Dpr3OrnBk_VA9dboyO8RRJ_zK8oH8Rj-an_P3dcpoOyT30nKNhZys_tF3YLoxOI-MxGn7FwHHjlFjo9h9TFgaRm000F__0m00)
 
-Cho phép nhập dữ liệu chi tiết như thời gian làm việc, các khoản thưởng/phụ cấp và khấu trừ.
-Dữ liệu này sẽ được xử lý tự động bằng các công thức và quy tắc do hệ thống cấu hình sẵn. Điều này giảm thiểu sai sót so với cách tính thủ công.
-Tính toán bảng lương:
+## 3. Employee Management System
+- Chức năng chính:
+  - Quản lý thông tin nhân viên.
+  - Thêm mới, chỉnh sửa, hoặc xóa thông tin nhân viên.
+- Thành phần chính:
+  - Employee Form: Giao diện để quản trị viên thực hiện các thao tác thêm, sửa, hoặc xóa.
+  - Employee Controller: Logic xử lý các thao tác và đảm bảo dữ liệu hợp lệ.
+  - Employee Database: Lưu trữ thông tin nhân viên.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/LCyX3i9040LGFwUOh2Tu16b3aQWYi0FTj1lOeUaE90tXCiWcLQ2eGEn9E05NO5iGe2R_vtqnh-uHEQ5A3dO7j95zXIhEh67ZfA8G5PB36A2apPPoZMfkozs-rXeNnA6mcWNJsecs0vqlKZp16I0ZeJMvtqNohJum0OXnD9eEamcgPU4REqwVNKlZbRyISk4lZ4VZ6rRGem4dlPqzxsqPG3Y2KlWRvoY6_oSGQSxwlzu0003__mC0)
 
-Hệ thống sử dụng dữ liệu đầu vào để tính toán tổng thu nhập (Gross Salary), khấu trừ (thuế thu nhập, bảo hiểm xã hội, bảo hiểm y tế), và lương thực nhận (Net Salary).
-Việc tích hợp các quy định pháp luật (như thuế suất) đảm bảo tính tuân thủ và chính xác.
-Tạo và xuất báo cáo:
+## 4. Charge Code Management System
+- Chức năng chính:
+  - Quản lý danh sách mã charge code.
+  - Thêm, chỉnh sửa hoặc xóa mã charge code.
+- Thành phần chính:
+  - Charge Code Form: Giao diện để quản trị viên quản lý mã charge code.
+  - Charge Code Controller: Logic xử lý, đảm bảo tính hợp lệ và tránh trùng lặp.
+  - Project Management Database: Lưu trữ danh sách mã charge code.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/L8yn3i8m34LtdyBANh4pe5PXhOHK1bQJHAH0KfIO0I4Emuh4n0O3Gq_I4t05qi80qvVjz_Jbr-EPHwR0UxS5Kjm458LsjQyZ1qgZG8fO0En8RMXbK4XB8QLijC6IVDevunchGsJZ1bhAii8Zd00qCIqf9ciMchLH_6jClyV1cPLJW0ApRFBHnoZcjhsuKTKzhZHQj3T2zMbMgLd0GFLuCdjQTlVh3hrDmQZ9MupjMTb_2NBZTV_f6m00__y30000)
 
-Báo cáo chi tiết lương từng cá nhân và tổng chi phí lương của tổ chức giúp bộ phận tài chính phân tích và đưa ra quyết định chiến lược.
-Tùy chọn xuất báo cáo dưới nhiều định dạng (PDF, Excel, CSV) tăng tính tiện dụng.
-1.2. Use Case Analysis
-Chạy bảng lương:
+## 5. Report Generation System
+- Chức năng chính:
+  - Tạo báo cáo dựa trên thông tin bảng chấm công, lương, hoặc nhân viên.
+  - Hiển thị hoặc lưu trữ báo cáo.
+- Thành phần chính:
+  - Report Generator: Tạo báo cáo theo yêu cầu từ dữ liệu.
+  - Data Integration Modules: Kết nối với Timecard Database, Paycheck Database, và Employee Database để lấy dữ liệu cần thiết.
+  - Report Viewer: Hiển thị báo cáo trên giao diện hoặc lưu trữ dưới dạng file.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/RD2nQiCm40RW_PxYq9uNw51YQfEbWqcoTBp8mXQn96FB1LCwzoaAJQ4KihH39tle8CXxw0dw2fLD8Gvq-U6EZ_lXVeRlPMEfjgqgWRWrDR8eKrBBnjOKHeRKO0HG4TzJBf2jHMLgYokXHG3IQDnqZHLgWklL1X_W4I0ZIpjgWjzA9JZL6SP_gmbkR-APIQdZXU3xIvFEIQAgqdH2N98a1eXmiRYUcg-GtRbZYzptxorQtnyCxbm87eB1I4OQkaTww_kt3ctXldIELchCfH-UiNGlwcpJ6Styy85bG4yjbgVFqq7dPvZyVrCNxbNZlNH7pG2MGcVZety1003__mC0)
 
-Người dùng chính là Payroll Administrator, chịu trách nhiệm điều hành và giám sát quá trình tính toán bảng lương.
-Kết quả đầu ra là bảng lương chi tiết được lưu trữ an toàn.
-Tạo báo cáo:
+## 6. Purchase Order Management System
+- Chức năng chính:
+  - Quản lý đơn mua hàng của nhân viên.
+  - Theo dõi trạng thái đơn mua hàng.
+- Thành phần chính:
+  - Purchase Order Form: Giao diện để nhân viên tạo hoặc chỉnh sửa đơn mua hàng.
+  - Purchase Order Controller: Xử lý logic, đảm bảo dữ liệu hợp lệ và cập nhật trạng thái đơn.
+  - Purchase Order Database: Lưu trữ thông tin đơn mua hàng.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/NCyz2i9048RXVaunR2_s5X8mwPG8yG9ZCcJ5x4Rsfn3n09RUG0yWM5YPmaBn7Zc1Lz3yLBRplKynd-eHM4V6ULK0fQuqA2ArASejiq2o605iA5rJpYZctgIIB6DiCZOu8_qxAzOEawrrh5emZsS9xc0Fa96ZPPF_mx0V-Zu4Y70m67TqX69Hty_bS2Bhwg0bshgw4BwExxD6vGdbywHp0MtSgR11q_VLevFFcyxHhNGF-XW2rbdpuXS00F__0m00)
 
-Quá trình này thường được thực hiện để báo cáo lên cấp trên hoặc phục vụ các mục đích kiểm toán.
-1.3. Biểu đồ Use Case
-Biểu đồ thể hiện rõ hai chức năng chính: chạy bảng lương và tạo báo cáo.
-Quan hệ giữa các tác nhân (Payroll Administrator) và hệ thống được xác định chặt chẽ.
-2. Maintain Timecard (Duy trì thẻ thời gian)
-2.1. Chức năng chính
-Timecard là công cụ ghi nhận thời gian làm việc, nghỉ phép, và các hoạt động liên quan đến lịch trình của nhân viên.
+## 7. Authentication and User Management System
+- Chức năng chính:
+  - Quản lý đăng nhập, phân quyền và xác thực người dùng.
+- Thành phần chính:
+  - Login Module: Giao diện và xử lý đăng nhập.
+  - Access Control Module: Xác định quyền truy cập dựa trên vai trò (nhân viên, quản trị viên).
+  - User Database: Lưu trữ thông tin người dùng, vai trò, và mật khẩu.
+- Biểu đồ ngữ cảnh:
+  - ![Diagram](https://planttext.com/api/plantuml/png/B8ynJiD044NxESNNzhu0GYYHtAOAAz4EwvLjWIV6EqQA44MK2t012g160ec6kA1mn3ts15m1EtOv_xt_fVdhVXP1kT6skYLskcbWRF2D0GTOefhT3USUPjbguKLBnrfk12mPHWyhbe5N0y9w6zHNf-RIhjPue4UYZ9MlEVXf5kbyJlifaKMIN4p-6SpnwRYN75B4mtjjw1IFtAOZlUfV7BI8tQU3vByViNikaVNVai_gUPBCwcKJ3s-uZzrkAFHVmwQMWhheNmLtxNR8nH0jl6JZu_y0003__mC0)
 
-Nhập thẻ thời gian:
+# Quan hệ giữa các hệ thống con:
+- Timecard Management System gửi dữ liệu bảng chấm công đến Payroll Processing System để tính lương.
+- Employee Management System cung cấp thông tin nhân viên cho cả Payroll Processing System và Report Generation System.
+- Charge Code Management System tích hợp với Timecard Management System để xác thực mã charge code.
+- Report Generation System truy xuất dữ liệu từ Timecard Database, Paycheck Database, và Employee Database.
+- Purchase Order Management System có thể tích hợp với Payroll Processing System để theo dõi các khoản chi phí liên quan đến đơn mua hàng.
 
-Cho phép nhân viên ghi lại giờ làm việc chi tiết, thời gian nghỉ phép và lý do.
-Tính năng này cần giao diện dễ sử dụng và hỗ trợ nhiều thiết bị (như PC hoặc smartphone).
-Chỉnh sửa và gửi thẻ thời gian:
-
-Nhân viên có thể cập nhật thẻ thời gian trước khi gửi tới quản lý.
-Tính năng gửi thông báo giúp quản lý xử lý nhanh các yêu cầu.
-Phê duyệt thẻ thời gian:
-
-Quản lý có thể kiểm tra, chỉnh sửa (nếu cần), và phê duyệt hoặc từ chối yêu cầu.
-Lịch sử phê duyệt được lưu trữ để đảm bảo minh bạch và dễ dàng truy xuất khi cần.
-2.2. Use Case Analysis
-Nộp thẻ thời gian:
-
-Nhân viên (Employee) nhập và gửi dữ liệu thẻ thời gian.
-Kết quả là thẻ thời gian được chuyển tới quản lý.
-Phê duyệt thẻ thời gian:
-
-Quản lý (Manager) kiểm tra và phê duyệt, đảm bảo thời gian làm việc được ghi nhận chính xác.
-2.3. Biểu đồ Use Case
-Biểu đồ minh họa cách các tác nhân tương tác với hệ thống trong việc duy trì thẻ thời gian, từ nhân viên nộp thẻ đến quản lý phê duyệt.
-3. Login (Đăng nhập)
-3.1. Chức năng chính
-Hệ thống đăng nhập là cửa ngõ để đảm bảo rằng chỉ những người được cấp quyền mới có thể truy cập.
-
-Đăng nhập:
-
-Người dùng nhập thông tin tài khoản và hệ thống kiểm tra thông tin này thông qua quy trình xác thực.
-Đảm bảo dữ liệu đăng nhập được mã hóa để bảo vệ thông tin cá nhân.
-Khôi phục mật khẩu:
-
-Cung cấp tùy chọn khôi phục mật khẩu qua email hoặc trả lời câu hỏi bảo mật.
-Tăng cường tính an toàn bằng cách xác minh danh tính người yêu cầu.
-Quản lý quyền truy cập:
-
-Phân quyền người dùng theo vai trò (Employee, Manager, Administrator).
-Đảm bảo mỗi vai trò chỉ truy cập được các chức năng phù hợp.
-3.2. Use Case Analysis
-Đăng nhập vào hệ thống:
-
-Người dùng nhập đúng thông tin để truy cập các chức năng liên quan.
-Nếu thất bại, hệ thống hiển thị thông báo lỗi.
-Khôi phục mật khẩu:
-
-Quy trình này đảm bảo người dùng lấy lại quyền truy cập một cách an toàn và nhanh chóng.
-3.3. Biểu đồ Use Case
-Biểu đồ thể hiện hai hành động chính: đăng nhập và khôi phục mật khẩu, với các bước và kết quả rõ ràng.
-Yêu cầu hệ thống
-1. Yêu cầu chức năng
-Các chức năng như Run Payroll, Maintain Timecard, và Login phải được thực hiện mượt mà, chính xác và phù hợp với nhu cầu của từng loại người dùng.
-2. Yêu cầu phi chức năng
-Hiệu suất: Tốc độ xử lý nhanh, đặc biệt khi số lượng nhân viên lớn.
-Bảo mật: Mã hóa dữ liệu, tuân thủ các quy định về bảo vệ dữ liệu như GDPR.
-Khả năng mở rộng: Hệ thống phải dễ dàng mở rộng để xử lý lượng người dùng và dữ liệu tăng lên.
-Khả năng sử dụng: Giao diện thân thiện, trực quan, giúp giảm thời gian đào tạo người dùng.
-Kiến trúc hệ thống
-Mô hình nhiều lớp:
-
-Giao diện người dùng (UI): Tương tác trực tiếp với người dùng, cung cấp các biểu mẫu nhập liệu và hiển thị thông tin.
-Lớp dịch vụ (Service Layer): Xử lý logic nghiệp vụ, đảm bảo các chức năng hoạt động như mong đợi.
-Lớp dữ liệu (Data Layer): Lưu trữ và truy xuất dữ liệu một cách an toàn, hiệu quả.
-UML:
-
-Biểu đồ minh họa mối quan hệ giữa các thành phần trong hệ thống, giúp hình dung cách dữ liệu và quy trình luân chuyển giữa các lớp.
+## Biểu đồ ngữ cảnh của hệ thống PayRoll System:
+![Diagram](https://planttext.com/api/plantuml/png/Z9IxYjj058RxUOg3-iLzYh2sB5maYWUlYsrdHuD7iJGoer70XDGXPHuWP1r8is2o8QdiOWi5luUU8A-GCxAiQ7o15KYWEP_-yvyB-hjzkiuDqwP84yAuoJHuGRf8igKG7h0SWiDfFqfZ5UT6CtojG_r3QC3K76wMkH5f7HWGic1ypcO2FCgMEakIDloU05vQSCFKB44WPB4oUCCqJWLdEgebmkanHtN6HPv38rXJb1vJ8w44EXGm4OjCcxp6HfFJfCgwSoeDWulMVCaquduMYRrYwFiN96cXkMIvWB6EX6veEYOV28cOONSsv1rAXM5pL6DJVzXX3jvS9kWYs0ek1P-x27KGdRr5Zx1tbmfbZk3GeHtpH-HuI4W0LrSlSJZm0hmtijgi5prVLjjFIa9URTSCPd6r_G99UPzw135BOraMVxrxB7eZ6OEotwbp99gnv6svuc1GzYS7lkyynyvxXFJt6BNKAmI-nc2gpIe3KwxHGh9xtAtKp2D8T3DNc-zBYAhj3qWmwSV2oTsmmGLKoVARWdTn-Q1QbjRijCwya76rUIfESWyiCiAUe4LP_bOpCBX8HZBqQR9ofTfoHfF_QdSbFZW-F8B7pwwXOUa5jFNMSC-gjN4N1hKxMJwalHixujvj-OkvQ1XqP7sx5ViXcsxfPyLz_wowCtKBTRR3qNVNezbEEcuRUhITVpvZ7o0j6CZotZR4ihNskDtHKuXS2nNP_-C_0000__y30000)
